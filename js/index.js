@@ -74,28 +74,30 @@ window.addEventListener("load",()=>{
     }
     const move = ()=>{
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
+        snake.posiciones.push( snake.posiciones[snake.posiciones.length])
 
-        snake.posiciones.forEach((posicion)=>{
-            const [y,x] = posicion.split("");
-            snake.posiciones.splice(0,1);
-            if(x==="9"){
-                snake.posiciones.push(`${parseInt(y)+ 1}0`)
-
-            }else{
-                snake.posiciones.push(`${y}${parseInt(x) + 1}`)
-            }
+        // snake.posiciones.forEach((posicion)=>{
+        //     const [y,x] = posicion.split("");
+        //     snake.posiciones.splice(0,1);
+        //     if(x==="9"){
+        //         snake.posiciones.push(`${parseInt(y)}0`)
+        //     }else {
+        //         snake.posiciones.push(`${y}${parseInt(x) + 1}`)
+        //     }
             
             
-        })
+        // })
+  
+
 
     }
     
     setInterval(()=>{
         renderSnake()
         if(snake.direccion === "r"){
-        move()
+            move()            
+          
         }
-        console.log(snake.posiciones)
        dibujar()
     },1000)
 
