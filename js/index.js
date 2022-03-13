@@ -56,18 +56,22 @@ window.addEventListener("load",()=>{
     }
 
     let x,y;
-    setInterval(()=>{
-       if(x !==  undefined && y !== undefined && board[x][y] === 2 ){
-        board[x][y] = 0 ;
-       }
-       x = Math.floor(Math.random() * 10)
-       y = Math.floor(Math.random() * 10)
-       if(vacio[x][y] === 0 ){
-        board[x][y] = 2;
-        dibujar()
-       }
-        
 
+    const renderFood =()=>{
+        if(x !==  undefined && y !== undefined && board[x][y] === 2 ){
+            board[x][y] = 0 ;
+           }
+           x = Math.floor(Math.random() * 10)
+           y = Math.floor(Math.random() * 10)
+           if(vacio[x][y] === 0 ){
+            board[x][y] = 2;
+           }
+    }
+    renderFood()
+
+    
+    setInterval(()=>{
+       dibujar()
     },1000)
 
 })

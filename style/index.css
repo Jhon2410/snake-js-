@@ -7,6 +7,10 @@ html{
 
 
 
+h1{
+    text-transform: uppercase;
+}
+
 .tablero{
     display:grid;
     grid-template-columns: repeat(10, 1fr);
