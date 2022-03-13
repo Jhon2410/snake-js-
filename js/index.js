@@ -48,11 +48,11 @@ window.addEventListener("load", () => {
     }
   };
 
-  let x, y;
+  let Fx, Fy;
 
   const renderFood = () => {
-    if (x !== undefined && y !== undefined && board[x][y] === 2) {
-      board[x][y] = 0;
+    if (Fx !== undefined && Fy !== undefined && board[Fx][Fy] === 2) {
+      board[Fx][Fy] = 0;
     }
     x = Math.floor(Math.random() * 10);
     y = Math.floor(Math.random() * 10);
@@ -64,27 +64,40 @@ window.addEventListener("load", () => {
 
   const limpiarSnakes = () => {};
   const move = (direccion) => {
+    const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
+    
       if(direccion==="r"){
-        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
         x==="9" ? snake.posiciones.push(`${y}0`)  : snake.posiciones.push(`${y}${parseInt(x) + 1}`);
         snake.posiciones.splice(0, 1);
+        if(board[y][parseInt(x) +  1] === 2 ){
+            renderFood();
+        }
+        
       }else if(direccion==="d"){
-        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
         y==="9" ? snake.posiciones.push(`0${x}`)  : snake.posiciones.push(`${parseInt(y) + 1}${x}`);
         snake.posiciones.splice(0, 1);
+        if(board[parseInt(y) +  1] [x]=== 2 ){
+            renderFood();
+        }
       }else if(direccion==="u"){
-        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
         x==="0" ? snake.posiciones.push(`9${x}`)  : snake.posiciones.push(`${parseInt(y) - 1}${x}`);
         snake.posiciones.splice(0, 1);
+        if(board[parseInt(y) -  1][x] === 2 ){
+            renderFood();
+        }
       }else if(direccion==="l"){
-        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
         x==="0" ? snake.posiciones.push(`${y}9`)  : snake.posiciones.push(`${y}${parseInt(x) - 1}`);
         snake.posiciones.splice(0, 1);
+        if(board[y][parseInt(x) -  1] === 2 ){
+            renderFood();
+        }
       }
+      
+
     
   };
 
@@ -99,9 +112,14 @@ window.addEventListener("load", () => {
   })
   document.getElementById("start").addEventListener("click", () => {
     setInterval(() => {
-      renderSnake();
-      dibujar();
+
+       try{
+        renderSnake();
+        dibujar();
         move(snake.direccion);
-    }, 100);
+       }catch(e){
+           console.log(e)
+       }
+    }, 200);
   });
 });
