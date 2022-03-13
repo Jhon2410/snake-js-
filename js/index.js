@@ -21,6 +21,7 @@ window.addEventListener("load",()=>{
             this.posiciones = posiciones;
             this.tamaño = tamaño;
             this.score = 0;
+            this.direccion = "r"
         }
     }
     
@@ -34,7 +35,6 @@ window.addEventListener("load",()=>{
         })
     }
 
-    renderSnake()
 
     const dibujar = ()=>{
         tablero.innerHTML ="";
@@ -69,8 +69,33 @@ window.addEventListener("load",()=>{
     }
     renderFood()
 
+    const limpiarSnakes = ()=>{
+
+    }
+    const move = ()=>{
+        board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
+
+        snake.posiciones.forEach((posicion)=>{
+            const [y,x] = posicion.split("");
+            snake.posiciones.splice(0,1);
+            if(x==="9"){
+                snake.posiciones.push(`${parseInt(y)+ 1}0`)
+
+            }else{
+                snake.posiciones.push(`${y}${parseInt(x) + 1}`)
+            }
+            
+            
+        })
+
+    }
     
     setInterval(()=>{
+        renderSnake()
+        if(snake.direccion === "r"){
+        move()
+        }
+        console.log(snake.posiciones)
        dibujar()
     },1000)
 
