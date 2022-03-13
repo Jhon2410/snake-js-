@@ -63,20 +63,49 @@ window.addEventListener("load", () => {
   renderFood();
 
   const limpiarSnakes = () => {};
-  const move = () => {
-    const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
-    board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
-    x==="9" ? snake.posiciones.push(`${y}0`)  : snake.posiciones.push(`${y}${parseInt(x) + 1}`);
-    snake.posiciones.splice(0, 1);
+  const move = (direccion) => {
+      if(direccion==="r"){
+        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
+        board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
+        x==="9" ? snake.posiciones.push(`${y}0`)  : snake.posiciones.push(`${y}${parseInt(x) + 1}`);
+        snake.posiciones.splice(0, 1);
+      }else if(direccion==="d"){
+        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
+        board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
+        y==="9" ? snake.posiciones.push(`0${x}`)  : snake.posiciones.push(`${parseInt(y) + 1}${x}`);
+        snake.posiciones.splice(0, 1);
+        console.log(x,y)
+      }else if(direccion==="l"){
+        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
+        board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
+        y==="9" ? snake.posiciones.push(`0${x}`)  : snake.posiciones.push(`${parseInt(y) + 1}${x}`);
+        snake.posiciones.splice(0, 1);
+        console.log(x,y)
+      }else if(direccion==="u"){
+        const [y, x] = snake.posiciones[snake.posiciones.length - 1].split("");
+        board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
+        y==="9" ? snake.posiciones.push(`0${x}`)  : snake.posiciones.push(`${parseInt(y) + 1}${x}`);
+        snake.posiciones.splice(0, 1);
+        console.log(x,y)
+      }
+    
   };
 
+  document.addEventListener("keyup",(e)=>{
+      switch(e.keyCode){
+          case 37 :  snake.direccion ="l";break;
+          case 38 :  snake.direccion ="u";break;
+          case 39 :  snake.direccion ="r";break;
+          case 40 :  snake.direccion ="d";break;
+          default : console.log("nada");
+      }
+      
+  })
   document.getElementById("start").addEventListener("click", () => {
     setInterval(() => {
       renderSnake();
       dibujar();
-      if (snake.direccion === "r") {
-        move();
-      }
-    }, 600);
+        move(snake.direccion);
+    }, 100);
   });
 });
