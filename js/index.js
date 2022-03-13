@@ -85,20 +85,17 @@ window.addEventListener("load",()=>{
         //     }else {
         //         snake.posiciones.push(`${y}${parseInt(x) + 1}`)
         //     }
-            
-            
         // })
-  
-
-
     }
     
-    setInterval(()=>{
-        renderSnake()
-        dibujar()
-        if(snake.direccion === "r"){
-            move()            
-        }
-    },600)
+    document.getElementById("start").addEventListener("click",()=>{
+        setInterval(()=>{
+            renderSnake()
+            dibujar()
+            if(snake.direccion === "r"){
+                move()            
+            }
+        },600)
+    })
 
 })
