@@ -41,9 +41,7 @@ window.addEventListener("load",()=>{
     setInterval(()=>{
        x = Math.floor(Math.random() * 10)
        y = Math.floor(Math.random() * 10)
-        console.log(x,y)
         dibujar(x,y)
-      
         
 
     },1000)
