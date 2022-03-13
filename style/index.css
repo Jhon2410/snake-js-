@@ -1,0 +1,36 @@
+html{
+    padding:0px;
+    margin:0px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+
+
+.tablero{
+    display:grid;
+    grid-template-columns: repeat(10, 1fr);
+    margin: 25px auto;
+    width: 60%;
+    box-shadow: 2px 2px 5px;
+    padding:15px;
+
+}
+
+.casilla{
+    background-color:#000;
+    width: 100%;
+    height: 50px;
+}
+
+.snake{
+    background-color:#0f0;
+}
+
+.food{
+    background-color:red;
+}
+.casilla:hover{
+    background-color:#fff;
+    filter: brightness(0.2);
+}
