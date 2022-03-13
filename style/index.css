@@ -25,6 +25,7 @@ html{
 
 .snake{
     background-color:#0f0;
+    border: 1px solid black;
 }
 
 .food{
