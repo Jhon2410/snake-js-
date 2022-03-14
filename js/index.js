@@ -72,6 +72,7 @@ window.addEventListener("load", () => {
         snake.posiciones.splice(0, 1);
         if(board[y][parseInt(x) +  1] === 2 ){
             renderFood();
+            snake.posiciones.push(`${y}${parseInt(x) + 2}`)
         }
         
       }else if(direccion==="d"){
@@ -80,6 +81,8 @@ window.addEventListener("load", () => {
         snake.posiciones.splice(0, 1);
         if(board[parseInt(y) +  1] [x]=== 2 ){
             renderFood();
+            snake.posiciones.push(`${parseInt(y) + 2}${x}`)
+
         }
       }else if(direccion==="u"){
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
@@ -87,6 +90,7 @@ window.addEventListener("load", () => {
         snake.posiciones.splice(0, 1);
         if(board[parseInt(y) -  1][x] === 2 ){
             renderFood();
+            snake.posiciones.push(`${parseInt(y) - 2}${x}`)
         }
       }else if(direccion==="l"){
         board[snake.posiciones[0][0]][snake.posiciones[0][1]] = 0;
@@ -94,6 +98,7 @@ window.addEventListener("load", () => {
         snake.posiciones.splice(0, 1);
         if(board[y][parseInt(x) -  1] === 2 ){
             renderFood();
+            snake.posiciones.push(`${y}${parseInt(x) - 2}`)
         }
       }
       
