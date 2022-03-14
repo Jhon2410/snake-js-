@@ -71,3 +71,13 @@ h1 {
     position: relative;
     top: -40px;
 }
+
+
+@media (max-width: 700px) {
+    .control-game{
+        position: inherit;
+        margin: 50px auto;
+    
+        
+    }
+}

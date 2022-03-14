@@ -1,5 +1,10 @@
 window.addEventListener("load", () => {
   const tablero = document.querySelector(".tablero");
+  const up = document.querySelector(".btn-up");
+  const left = document.querySelector(".btn-left");
+  const rigth = document.querySelector(".btn-rigth")
+  const down = document.querySelector(".btn-down");
+
 
   const board = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -26,12 +31,20 @@ window.addEventListener("load", () => {
   }
 
   const snake = new Snake(["00", "01", "02", "03"], 3);
+  left.addEventListener("click", () => snake.direccion = "l");
+  up.addEventListener("click", () => snake.direccion = "u");
+  rigth.addEventListener("click", () => snake.direccion = "r");
+  down.addEventListener("click", () => snake.direccion = "d");
   const renderSnake = () => {
     snake.posiciones.forEach((posicion) => {
       const [p1, p2] = posicion.split("");
       board[p1][p2] = 1;
     });
   };
+
+  const changeDireccion = (direccion)=>{
+    snake.direccion = direccion;
+  }
 
   const dibujar = () => {
     tablero.innerHTML = "";
