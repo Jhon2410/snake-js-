@@ -116,6 +116,7 @@ window.addEventListener("load", () => {
       
   })
   document.getElementById("start").addEventListener("click", () => {
+    document.getElementById("start").setAttribute("hidden",true)
     setInterval(() => {
 
        try{
